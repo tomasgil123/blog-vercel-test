@@ -2,7 +2,7 @@ import React from 'react'
 import PostType from 'src/types/post'
 import { getPostBySlug, getAllPosts } from 'src/lib/posts'
 
-import PostBody from 'src/components/postBody'
+import PostBody from 'src/domain/post/postBody'
 
 type PostPageProps = {
   post: PostType
