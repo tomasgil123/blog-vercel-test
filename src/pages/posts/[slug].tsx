@@ -1,13 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import PostType from 'src/types/post'
 import { getPostBySlug, getAllPosts } from 'src/lib/posts'
 
 import PostBody from 'src/components/postBody'
-
-const Container = styled.div`
-  color: red;
-`
 
 type PostPageProps = {
   post: PostType
@@ -15,10 +10,9 @@ type PostPageProps = {
 
 const PostPage: React.FunctionComponent<PostPageProps> = ({ post }) => {
   return (
-    <Container>
-      Post page
+    <>
       <PostBody source={post.content} />
-    </Container>
+    </>
   )
 }
 
@@ -30,7 +24,7 @@ type Params = {
   }
 }
 
-export async function getStaticProps({ params }: Params): Promise<any> {
+export async function getStaticProps({ params }: Params): Promise<unknown> {
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -50,7 +44,7 @@ export async function getStaticProps({ params }: Params): Promise<any> {
   }
 }
 
-export async function getStaticPaths(): Promise<any> {
+export async function getStaticPaths(): Promise<unknown> {
   const posts = getAllPosts(['slug'])
 
   return {
