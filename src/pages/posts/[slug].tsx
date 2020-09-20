@@ -3,18 +3,23 @@ import PostType from 'src/types/post'
 import { getPostBySlug, getAllPosts } from 'src/lib/posts'
 
 import PostBody from 'src/domain/post/postBody'
+import Layout from 'src/components/layout/postlayout'
 
 type PostPageProps = {
   post: PostType
 }
 
-const PostPage: React.FunctionComponent<PostPageProps> = ({ post }) => {
+type PostPageComponent = React.FC<PostPageProps> & { layout: typeof Layout }
+
+const PostPage: PostPageComponent = ({ post }) => {
   return (
     <>
       <PostBody source={post.content} />
     </>
   )
 }
+
+PostPage.layout = Layout
 
 export default PostPage
 
