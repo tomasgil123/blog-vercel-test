@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { colors, space, breakpoints } from 'src/tokens'
 
-import { TriangleCircleBottom } from './shapes'
+import { TriangleCircleBottom, SquareHollowCenterTop } from './shapes'
 
 const HomeContainer = styled.div`
   background-color: ${colors.base.white};
@@ -62,6 +62,7 @@ const Landing: React.FC = () => {
         <Title>Hi, Im Tomas</Title>
         <Subtitle>Im a front developer</Subtitle>
       </ContainerTitle>
+      <SquareHollowCenterTop />
       <TriangleCircleBottom />
     </HomeContainer>
   )

@@ -20,8 +20,7 @@ export const SquareSmall = styled.div`
 `
 
 export const SquareHollowCenterSmall = styled.div`
-  border: solid ${space.s6};
-  ${(props: SquareProps) => props.color};
+  border: solid ${space.s6} ${(props: SquareProps) => props.color};
   width: ${space.s12};
   height: ${space.s12};
   @media (min-width: ${breakpoints.md}) {
@@ -31,5 +30,19 @@ export const SquareHollowCenterSmall = styled.div`
   @media (min-width: ${breakpoints.lg}) {
     width: ${space.s24};
     height: ${space.s24};
+  }
+`
+
+export const SquareHollowCenter = styled.div`
+  border: solid ${space.s4} ${(props: SquareProps) => props.color};
+  width: ${space.s24};
+  height: ${space.s24};
+  @media (min-width: ${breakpoints.md}) {
+    width: ${space.s32};
+    height: ${space.s32};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    width: ${space.s40};
+    height: ${space.s40};
   }
 `

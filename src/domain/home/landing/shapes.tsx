@@ -2,16 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import { colors, space, breakpoints } from 'src/tokens'
 
-import { TriangleBottom } from 'src/components/shapes/triangle'
+import { TriangleBottom, TriangleTop } from 'src/components/shapes/triangle'
 import { CircleSmall } from 'src/components/shapes/circle'
+import { SquareHollowCenter } from 'src/components/shapes/square'
 
-const Container = styled.div`
+const ContainerTriangleCircleBottom = styled.div`
   bottom: 0px;
   right: 0px;
   position: absolute;
 `
 
-const ContainerCircle = styled.div`
+const ContainerCircleTriangleCircleBottom = styled.div`
   div {
     top: ${space.s16};
     left: ${space.s16};
@@ -30,11 +31,49 @@ const ContainerCircle = styled.div`
 
 export const TriangleCircleBottom: React.FC = () => {
   return (
-    <Container>
-      <ContainerCircle>
+    <ContainerTriangleCircleBottom>
+      <ContainerCircleTriangleCircleBottom>
         <CircleSmall color={colors.base.gold} />
-      </ContainerCircle>
+      </ContainerCircleTriangleCircleBottom>
       <TriangleBottom color={colors.base.tomato} orientation={'left'} />
-    </Container>
+    </ContainerTriangleCircleBottom>
+  )
+}
+
+const ContainerSquareHollowCenterTop = styled.div`
+  top: ${space.s4};
+  right: -${space.s12};
+  position: absolute;
+  @media (min-width: ${breakpoints.md}) {
+    top: ${space.s12};
+    right: ${space.s16};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    top: ${space.s24};
+    right: ${space.s32};
+  }
+`
+
+const ContainerTriangleSquareHollowCenterTop = styled.div`
+  div {
+    top: ${space.s8};
+    left: ${space.s8};
+    position: relative;
+    z-index: 10;
+    @media (min-width: ${breakpoints.md}) {
+      top: ${space.s12};
+      left: ${space.s8};
+    }
+  }
+`
+
+export const SquareHollowCenterTop: React.FC = () => {
+  return (
+    <ContainerSquareHollowCenterTop>
+      <ContainerTriangleSquareHollowCenterTop>
+        <TriangleTop color={colors.base.darksLateBlue} orientation={'right'} />
+      </ContainerTriangleSquareHollowCenterTop>
+      <SquareHollowCenter color={colors.base.deepSkyBlue} />
+    </ContainerSquareHollowCenterTop>
   )
 }
