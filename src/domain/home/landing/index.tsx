@@ -24,12 +24,9 @@ const ContainerTitle = styled.div`
   padding-bottom: ${space.s8};
   @media (min-width: ${breakpoints.md}) {
     padding-top: ${space.s40};
-    padding-left: ${space.s12};
-    padding-right: ${space.s8};
   }
   @media (min-width: ${breakpoints.lg}) {
     padding-top: ${space.s40};
-    padding-left: ${space.s40};
   }
 `
 
