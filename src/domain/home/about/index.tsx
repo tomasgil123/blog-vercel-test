@@ -46,7 +46,7 @@ const Body = styled.div`
     font-size: ${space.s4};
   }
   @media (min-width: ${breakpoints.lg}) {
-    font-size: ${space.s4};
+    font-size: ${space.s5};
   }
 `
 
@@ -55,6 +55,20 @@ const ProfileImage = styled.img`
   border: ${space.s1} solid ${colors.base.deepSkyBlue};
   height: ${space.s32};
   width: ${space.s32};
+  margin-top: ${space.s6};
+  margin-bottom: ${space.s6};
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: ${space.s8};
+    margin-bottom: ${space.s8};
+    height: ${space.s40};
+    width: ${space.s40};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    margin-top: ${space.s12};
+    margin-bottom: ${space.s12};
+    height: ${space.s48};
+    width: ${space.s48};
+  }
 `
 
 const AboutMe: React.FC = () => {
