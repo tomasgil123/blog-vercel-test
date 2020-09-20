@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { colors, space, breakpoints } from 'src/tokens'
 
-import { TriangleBottom, TriangleTop } from 'src/components/shapes/triangle'
-import { CircleSmall } from 'src/components/shapes/circle'
-import { SquareHollowCenter } from 'src/components/shapes/square'
+import { TriangleBottom, TriangleTopSmall } from 'src/components/shapes/triangle'
+import { CircleSmall, CircleVertical } from 'src/components/shapes/circle'
+import { SquareHollowCenter, SquareSmall } from 'src/components/shapes/square'
 
 const ContainerTriangleCircleBottom = styled.div`
   bottom: 0px;
@@ -71,9 +71,95 @@ export const SquareHollowCenterTop: React.FC = () => {
   return (
     <ContainerSquareHollowCenterTop>
       <ContainerTriangleSquareHollowCenterTop>
-        <TriangleTop color={colors.base.darksLateBlue} orientation={'right'} />
+        <TriangleTopSmall color={colors.base.darksLateBlue} orientation={'right'} />
       </ContainerTriangleSquareHollowCenterTop>
       <SquareHollowCenter color={colors.base.deepSkyBlue} />
     </ContainerSquareHollowCenterTop>
+  )
+}
+
+const ContainerGroupCirclesLeft = styled.div`
+  bottom: -${space.s6};
+  left: ${space.s20};
+  position: relative;
+  z-index: 10;
+  @media (min-width: ${breakpoints.md}) {
+    bottom: ${space.s4};
+    left: ${space.s24};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    bottom: ${space.s48};
+    left: ${space.s48};
+  }
+`
+
+const ContainerTriangleGroupCirclesLeft = styled.div`
+  div {
+    bottom: -${space.s20};
+    right: ${space.s16};
+    position: relative;
+    z-index: 10;
+    @media (min-width: ${breakpoints.md}) {
+      bottom: -${space.s32};
+      right: ${space.s16};
+    }
+    @media (min-width: ${breakpoints.lg}) {
+      bottom: -${space.s48};
+      right: ${space.s32};
+    }
+  }
+`
+
+const ContainerCircleSmallGroupCirclesLeft = styled.div`
+  div {
+    bottom: -${space.s16};
+    right: ${space.s16};
+    position: relative;
+    z-index: 10;
+    @media (min-width: ${breakpoints.md}) {
+      bottom: -${space.s24};
+      right: ${space.s20};
+    }
+    @media (min-width: ${breakpoints.lg}) {
+      bottom: -${space.s32};
+      right: ${space.s32};
+    }
+  }
+`
+
+export const GroupCirclesLeft: React.FC = () => {
+  return (
+    <ContainerGroupCirclesLeft>
+      <ContainerCircleSmallGroupCirclesLeft>
+        <CircleSmall color={colors.base.gold} />
+      </ContainerCircleSmallGroupCirclesLeft>
+      <ContainerTriangleGroupCirclesLeft>
+        <TriangleTopSmall color={colors.base.darksLateBlue} orientation={'left'} />
+      </ContainerTriangleGroupCirclesLeft>
+      <CircleVertical color={colors.base.deepSkyBlue} />
+    </ContainerGroupCirclesLeft>
+  )
+}
+
+const ContainerSquareSmallCenter = styled.div`
+  top: ${space.s20};
+  left: ${space.s40};
+  position: relative;
+  z-index: 10;
+  @media (min-width: ${breakpoints.md}) {
+    top: 0px;
+    left: 24rem;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    top: -${space.s64};
+    left: 30rem;
+  }
+`
+
+export const SquareSmallCenter: React.FC = () => {
+  return (
+    <ContainerSquareSmallCenter>
+      <SquareSmall color={colors.base.deepSkyBlue} />
+    </ContainerSquareSmallCenter>
   )
 }
