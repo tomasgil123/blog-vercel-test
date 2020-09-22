@@ -67,12 +67,7 @@ const ContainerCircleHorizontal = styled.div`
   left: -${space.s8};
   position: absolute;
   @media (min-width: ${breakpoints.md}) {
-    bottom: -${space.s32};
-    left: -${space.s48};
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    bottom: -${space.s32};
-    left: -${space.s64};
+    display: none;
   }
 `
 
