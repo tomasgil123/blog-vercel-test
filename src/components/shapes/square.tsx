@@ -20,7 +20,7 @@ export const SquareSmall = styled.div`
 `
 
 export const SquareHollowCenterSmall = styled.div`
-  border: solid ${space.s6} ${(props: SquareProps) => props.color};
+  border: solid ${space.s3} ${(props: SquareProps) => props.color};
   width: ${space.s12};
   height: ${space.s12};
   @media (min-width: ${breakpoints.md}) {

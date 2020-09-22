@@ -26,12 +26,12 @@ export const Circle = styled.div`
   border-radius: 50%;
   background: ${(props: CircleProps) => props.color};
   @media (min-width: ${breakpoints.md}) {
-    width: ${space.s40};
-    height: ${space.s40};
+    width: ${space.s32};
+    height: ${space.s32};
   }
   @media (min-width: ${breakpoints.lg}) {
-    width: ${space.s64};
-    height: ${space.s64};
+    width: ${space.s40};
+    height: ${space.s40};
   }
 `
 
@@ -106,6 +106,3 @@ export const CircleHorizontal = styled.div`
     border-top-right-radius: ${space.s64};
   }
 `
-
-//HalfCircleVertical - top - bottom
-//HalfCircleHorizontal - right - left

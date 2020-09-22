@@ -39,7 +39,7 @@ const Title = styled.div`
 const Body = styled.div`
   color: ${colors.text.primary};
   font-size: ${space.s4};
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
   line-height: 1.8;
   @media (min-width: ${breakpoints.md}) {
