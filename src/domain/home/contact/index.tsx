@@ -16,9 +16,11 @@ const Container = styled.div`
   padding-right: ${space.s4};
   @media (min-width: ${breakpoints.md}) {
     padding-top: ${space.s40};
+    padding-bottom: ${space.s24};
   }
   @media (min-width: ${breakpoints.lg}) {
     padding-top: ${space.s40};
+    padding-bottom: ${space.s32};
   }
 `
 
