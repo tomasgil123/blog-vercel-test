@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
 import styled from 'styled-components'
-import { colors, space, breakpoints } from 'src/tokens'
+import { colors, space, breakpoints, boxShadow } from 'src/tokens'
 import { projects } from './data'
 
 import { CircleSquareBottom, CircleHorizontalBottom } from './shapes'
@@ -54,6 +54,10 @@ const Body = styled.div`
   }
 `
 
+const ProjectBody = styled(Body)`
+  flex-grow: 1;
+`
+
 const ProjectName = styled.div`
   color: ${colors.text.primary};
   font-size: ${space.s5};
@@ -84,13 +88,14 @@ const ContainerProjects = styled.div`
 `
 
 const Project = styled.div`
-  padding-top: ${space.s6};
-  padding-bottom: ${space.s6};
+  padding: ${space.s6};
   flex: 1;
-  @media (min-width: ${breakpoints.md}) {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: ${space.s4};
+  box-shadow: ${boxShadow.shadowMd};
+  border: 1px solid ${colors.base.borders};
 `
 
 const ContainerProjectLink = styled.a`
@@ -119,7 +124,7 @@ const MyPortfolio: React.FC = () => {
         {projects.map((project) => (
           <Project key={project.projectName}>
             <ProjectName>{project.projectName}</ProjectName>
-            <Body>{project.description}</Body>
+            <ProjectBody>{project.description}</ProjectBody>
             <ContainerProjectLink>
               <ProjectLink href={project.projectLink} target="_blank">
                 See more

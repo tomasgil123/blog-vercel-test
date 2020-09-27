@@ -5,8 +5,8 @@ export const projects = [
     projectLink: '',
   },
   {
-    projectName: 'This website',
-    description: 'Portfolio and blog',
+    projectName: 'Blog',
+    description: 'This website, a portfolio and blog',
     projectLink: '',
   },
 ]
