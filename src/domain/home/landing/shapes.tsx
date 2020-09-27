@@ -11,6 +11,18 @@ const ContainerTriangleCircleBottom = styled.div`
   right: 0px;
   position: absolute;
 `
+export const VerySmallCircle = styled(CircleSmall)`
+  width: ${space.s3};
+  height: ${space.s3};
+  @media (min-width: ${breakpoints.md}) {
+    width: ${space.s3};
+    height: ${space.s3};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    width: ${space.s3};
+    height: ${space.s3};
+  }
+`
 
 const ContainerCircleTriangleCircleBottom = styled.div`
   div {

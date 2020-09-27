@@ -7,7 +7,9 @@ import {
   SquareHollowCenterTop,
   GroupCirclesLeft,
   SquareSmallCenter,
+  VerySmallCircle,
 } from './shapes'
+import MainButton from 'src/components/button'
 
 const HomeContainer = styled.div`
   background-color: ${colors.base.white};
@@ -57,12 +59,34 @@ const Subtitle = styled.div`
   }
 `
 
+const ContainerWorkStatus = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: ${space.s4};
+  justify-content: center;
+  align-items: center;
+`
+
+const WorkStatus = styled.div`
+  color: ${colors.text.primary};
+  font-size: ${space.s4};
+  padding-left: ${space.s1};
+`
+
 const Landing: React.FC = () => {
+  const onSendEmail = () => {
+    window.open('mailto:tomasgil1234@gmail.com')
+  }
   return (
     <HomeContainer>
+      <ContainerWorkStatus>
+        <VerySmallCircle color={colors.base.darksLateBlue} />
+        <WorkStatus>Available for work</WorkStatus>
+      </ContainerWorkStatus>
       <ContainerTitle>
         <Title>Hi, Im Tomas</Title>
         <Subtitle>Im a front developer</Subtitle>
+        <MainButton text={'Send me an email'} onClickButton={onSendEmail} />
       </ContainerTitle>
       <SquareHollowCenterTop />
       <TriangleCircleBottom />

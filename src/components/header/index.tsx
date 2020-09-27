@@ -56,7 +56,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ showProgressBar }) => {
   return (
     <HeaderWrapper showProgressBar={showProgressBar}>
       <Container>
-        <Title>Tomas Gil</Title>
+        <Title>{'{ Tomas Gil }'}</Title>
       </Container>
     </HeaderWrapper>
   )
