@@ -6,9 +6,6 @@ const colors = {
     darksLateBlue: '#25468b',
     gold: '#ffdc0a',
     tomato: '#ff6243',
-    primaryGreen: '#2a5913',
-    secondaryGreen: '#ADE8C4',
-    secondaryBlue: '#47657f',
   },
   text: {
     error: '#DF744A',
