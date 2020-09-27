@@ -22,7 +22,7 @@ const Title = styled.div`
   text-align: left;
   font-weight: 500;
   cursor: pointer;
-  padding-bottom: ${space.s4};
+  padding-bottom: ${space.s2};
   @media (min-width: ${breakpoints.md}) {
     font-size: ${space.s6};
   }
@@ -31,8 +31,20 @@ const Title = styled.div`
   }
 `
 
+const ContainerDateInformation = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: ${space.s4};
+`
+
+const DateIcon = styled.div`
+  color: ${colors.text.secondary};
+  padding-right: ${space.s2};
+`
+
 const Body = styled.div`
-  color: ${colors.text.primary};
+  color: ${colors.text.secondary};
   font-size: ${space.s4};
   font-weight: 400;
   line-height: 1.8;
@@ -57,6 +69,14 @@ type PostProps = {
   slug: string
 }
 
+const formatDate = (date) => {
+  const dateObject = new Date(date)
+  const monthNameShort = dateObject.toLocaleString('en', { month: 'short' })
+  const numberDay = dateObject.getDate()
+  const numberYear = dateObject.getFullYear()
+  return `${monthNameShort} ${numberDay}, ${numberYear}`
+}
+
 const Post: React.FC<PostProps> = ({ title, date, coverImage, slug }) => {
   return (
     <Container>
@@ -65,7 +85,12 @@ const Post: React.FC<PostProps> = ({ title, date, coverImage, slug }) => {
           <a>{title}</a>
         </Link>
       </Title>
-      <Body>{date}</Body>
+      <ContainerDateInformation>
+        <DateIcon>
+          <img src={'calendar.svg'} alt="calendar" />
+        </DateIcon>
+        <Body>{formatDate(date)}</Body>
+      </ContainerDateInformation>
       <CoverImage src={coverImage} />
     </Container>
   )

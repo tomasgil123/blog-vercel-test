@@ -1,6 +1,6 @@
 ---
 title: 'When to Use Static Generation v.s. Server-side Rendering'
-date: '2020-01-02'
+date: '02/02/2020'
 coverImage: 'postImages/salty_egg.jpg'
 slug: 'test2'
 ---

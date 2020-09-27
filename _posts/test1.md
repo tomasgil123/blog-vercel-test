@@ -1,6 +1,6 @@
 ---
 title: 'Two Forms of Pre-rendering'
-date: '2020-01-01'
+date: '01/01/2020'
 coverImage: 'postImages/salty_egg.jpg'
 slug: 'test1'
 ---
