@@ -5,6 +5,7 @@ import { colors, space, breakpoints, boxShadow } from 'src/tokens'
 import { projects } from './data'
 
 import { CircleSquareBottom, CircleHorizontalBottom } from './shapes'
+import MainButton from 'src/components/button'
 
 const Container = styled.div`
   position: relative;
@@ -24,6 +25,17 @@ const Container = styled.div`
     padding-top: ${space.s40};
     padding-bottom: ${space.s16};
   }
+`
+
+const ContainerGithubButton = styled.div`
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  padding-left: ${space.s4};
+  padding-right: ${space.s4};
+  padding-bottom: ${space.s12};
 `
 
 const Title = styled.div`
@@ -80,7 +92,7 @@ const ContainerProjects = styled.div`
   margin: auto;
   padding-left: ${space.s4};
   padding-right: ${space.s4};
-  padding-bottom: ${space.s12};
+  padding-bottom: ${space.s4};
   justify-content: center;
   @media (min-width: ${breakpoints.md}) {
     flex-direction: row;
@@ -112,6 +124,10 @@ const ProjectLink = styled.a`
 `
 
 const MyPortfolio: React.FC = () => {
+  const onGoToGithub = () => {
+    window.open('https://github.com/tomasgil123', '_blank')
+  }
+
   return (
     <>
       <Container>
@@ -133,6 +149,10 @@ const MyPortfolio: React.FC = () => {
           </Project>
         ))}
       </ContainerProjects>
+      <ContainerGithubButton>
+        <Body>You can alsho check the code on my github account</Body>
+        <MainButton text={'Go to my Github account'} onClickButton={onGoToGithub} />
+      </ContainerGithubButton>
     </>
   )
 }
