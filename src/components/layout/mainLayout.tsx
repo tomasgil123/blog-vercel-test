@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Header from 'src/components/header'
+import Footer from 'src/components/footer'
 
 const Container = styled.div`
   overflow-x: hidden;
@@ -16,6 +17,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
     <Container>
       <Header showProgressBar={false} />
       {children}
+      <Footer />
     </Container>
   )
 }
