@@ -7,6 +7,7 @@ import Landing from 'src/domain/home/landing'
 import AboutMe from 'src/domain/home/about'
 import Portfolio from 'src/domain/home/portfolio'
 import Posts from 'src/domain/home/posts'
+import Contact from 'src/domain/home/contact'
 
 type HomeProps = {
   lastThreePosts: PostType[]
@@ -21,6 +22,7 @@ const Home: HomeComponent = ({ lastThreePosts }) => {
       <AboutMe />
       <Portfolio />
       <Posts lastThreePosts={lastThreePosts} />
+      <Contact />
     </div>
   )
 }
