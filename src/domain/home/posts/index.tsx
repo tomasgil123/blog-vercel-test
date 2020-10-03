@@ -4,6 +4,7 @@ import PostType from 'src/types/post'
 import { colors, space, breakpoints } from 'src/tokens'
 
 import Post from './post'
+import { TwoTriangles } from './shapes'
 
 const Container = styled.div`
   position: relative;
@@ -45,6 +46,7 @@ const Posts: React.FC<PostsProps> = ({ lastThreePosts }) => {
   return (
     <Container>
       <Title>My latests posts</Title>
+      <TwoTriangles />
       {lastThreePosts.map((post) => (
         <Post
           key={post.title}
