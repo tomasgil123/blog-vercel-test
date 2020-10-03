@@ -23,10 +23,14 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
       const scroll = `${totalScroll / windowHeight}`
       setScroll(scroll * 100)
     }
-
-    window.addEventListener('scroll', progressBarHandler)
-
-    return () => window.removeEventListener('scroll', progressBarHandler)
+    if (window) {
+      window.addEventListener('scroll', progressBarHandler)
+    }
+    return () => {
+      if (window) {
+        window.removeEventListener('scroll', progressBarHandler)
+      }
+    }
   }, [])
 
   return (
