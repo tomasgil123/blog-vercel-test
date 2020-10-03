@@ -20,8 +20,8 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
       const totalScroll = document.documentElement.scrollTop
       const windowHeight =
         document.documentElement.scrollHeight - document.documentElement.clientHeight
-      const scroll = `${totalScroll / windowHeight}`
-      setScroll(scroll * 100)
+      const scroll = Math.abs(totalScroll / windowHeight)
+      setScroll((scroll * 100).toString())
     }
     if (window) {
       window.addEventListener('scroll', progressBarHandler)
