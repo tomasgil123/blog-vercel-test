@@ -38,7 +38,7 @@ export const TwoTriangles: React.FC = () => {
       <ContainerTriangleTop>
         <TriangleBottomSmall color={colors.base.tomato} orientation={'left'} />
       </ContainerTriangleTop>
-      <TriangleBottomSmall color={colors.base.darksLateBlue} orientation={'right'} />
+      <TriangleBottomSmall color={colors.base.gold} orientation={'right'} />
     </ContainerTwoTriangles>
   )
 }
