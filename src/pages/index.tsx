@@ -1,5 +1,6 @@
 import React from 'react'
 import PostType from 'src/types/post'
+import PageWithLayoutType from 'src/types/pageWithLayout'
 import { getLastThreePosts } from 'src/lib/posts'
 
 import Layout from 'src/components/layout/mainLayout'
@@ -13,9 +14,7 @@ type HomeProps = {
   lastThreePosts: PostType[]
 }
 
-type HomeComponent = React.FC<HomeProps> & { layout: typeof Layout }
-
-const Home: HomeComponent = ({ lastThreePosts }) => {
+const Home: React.FC<HomeProps> = ({ lastThreePosts }) => {
   return (
     <div>
       <Landing />
@@ -27,7 +26,7 @@ const Home: HomeComponent = ({ lastThreePosts }) => {
   )
 }
 
-Home.layout = Layout
+;(Home as PageWithLayoutType).layout = Layout
 
 export default Home
 

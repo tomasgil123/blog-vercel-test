@@ -1,17 +1,16 @@
 import React from 'react'
 import PostType from 'src/types/post'
+import PageWithLayoutType from 'src/types/pageWithLayout'
 import { getPostBySlug, getAllPosts } from 'src/lib/posts'
 
 import PostBody from 'src/domain/post/postBody'
-import Layout from 'src/components/layout/postlayout'
+import Layout from 'src/components/layout/postLayout'
 
 type PostPageProps = {
   post: PostType
 }
 
-type PostPageComponent = React.FC<PostPageProps> & { layout: typeof Layout }
-
-const PostPage: PostPageComponent = ({ post }) => {
+const PostPage: React.FC<PostPageProps> = ({ post }) => {
   return (
     <>
       <PostBody source={post.content} />
@@ -19,7 +18,7 @@ const PostPage: PostPageComponent = ({ post }) => {
   )
 }
 
-PostPage.layout = Layout
+;(PostPage as PageWithLayoutType).layout = Layout
 
 export default PostPage
 
