@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { colors, space, breakpoints } from 'src/tokens'
 
 import MainButton from 'src/components/button'
+import { CircleHollow } from './shapes'
 
 const Container = styled.div`
   position: relative;
@@ -59,6 +60,7 @@ const Contact: React.FC = () => {
   return (
     <Container>
       <Title>Contact</Title>
+      <CircleHollow />
       <Body>If you want to know how I can help dont hesitate in sending me an email</Body>
       <MainButton text={'Send me an email'} onClickButton={onSendEmail} />
     </Container>

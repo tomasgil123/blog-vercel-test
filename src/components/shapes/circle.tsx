@@ -36,8 +36,7 @@ export const Circle = styled.div`
 `
 
 export const CircleHollowCenterSmall = styled.div`
-  border: solid ${space.s6};
-  ${(props: CircleProps) => props.color};
+  border: ${space.s2} solid ${(props: CircleProps) => props.color};
   width: ${space.s12};
   height: ${space.s12};
   border-radius: 50%;
