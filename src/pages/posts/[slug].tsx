@@ -4,7 +4,7 @@ import PageWithLayoutType from 'src/types/pageWithLayout'
 import { getPostBySlug, getAllPosts } from 'src/lib/posts'
 
 import PostBody from 'src/domain/post/postBody'
-import Layout from 'src/components/layout/postLayout'
+import Layout from 'src/components/layout/postlayout'
 
 type PostPageProps = {
   post: PostType
