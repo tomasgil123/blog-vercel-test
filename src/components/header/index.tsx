@@ -7,17 +7,16 @@ type HeaderWrapperProps = {
 }
 
 const HeaderWrapper = styled.div`
-  position: ${(props: HeaderWrapperProps) => (props.showProgressBar ? 'relative' : 'sticky')};
+  position: ${(props: HeaderWrapperProps) => (props.showProgressBar ? 'sticky' : 'relative')};
   top: 0px;
   left: 0px;
   background-color: ${colors.base.white};
   z-index: 101;
   font-size: ${space.s4};
   width: 100%;
-  display: flex;
+  overflow-x: hidden;
   box-shadow: ${(props: HeaderWrapperProps) =>
     props.showProgressBar ? 'inherit' : `${boxShadow.shadow}`};
-  flex-direction: column;
 `
 
 const Container = styled.div`
@@ -48,16 +47,40 @@ const Title = styled.span`
   }
 `
 
-type HeaderProps = {
-  showProgressBar: boolean
+type ProgressBarProps = {
+  width: string
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ showProgressBar }) => {
+const ProgressBar = styled.div`
+  width: ${(props: ProgressBarProps) => `${props.width}%`};
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: ${colors.base.darksLateBlue};
+  transition: width 0.5s;
+  &:after {
+    content: '';
+    width: 100vw;
+    height: 4px;
+    background: #dfe4e7;
+    position: absolute;
+    z-index: -1;
+  }
+`
+
+type HeaderProps = {
+  showProgressBar: boolean
+  width?: string
+}
+
+const Header: React.FunctionComponent<HeaderProps> = ({ showProgressBar, width }) => {
   return (
     <HeaderWrapper showProgressBar={showProgressBar}>
       <Container>
         <Title>{'{ Tomas Gil }'}</Title>
       </Container>
+      {showProgressBar && <ProgressBar width={width} />}
     </HeaderWrapper>
   )
 }
