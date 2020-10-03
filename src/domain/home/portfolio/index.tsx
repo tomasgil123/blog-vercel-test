@@ -92,10 +92,14 @@ const ContainerProjects = styled.div`
   margin: auto;
   padding-left: ${space.s4};
   padding-right: ${space.s4};
-  padding-bottom: ${space.s4};
+  padding-bottom: ${space.s8};
   justify-content: center;
   @media (min-width: ${breakpoints.md}) {
     flex-direction: row;
+    padding-bottom: ${space.s12};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    padding-bottom: ${space.s16};
   }
 `
 

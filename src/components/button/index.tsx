@@ -4,6 +4,8 @@ import { colors, space } from 'src/tokens/index'
 
 const ContainerButton = styled.span`
   font-size: ${space.s5};
+  color: ${colors.text.primary};
+  font-weight: 600;
   cursor: pointer;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, ${colors.base.deepSkyBlue} 50%);
 `
