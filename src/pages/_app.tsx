@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import 'src/styles/globals.css'
 import PageWithLayoutType from 'src/types/pageWithLayout'
+import React from 'react'
 //Component es un element de Nextjs que no tiene una property layout
 //Podemos extender Component para que tenga una property layout?
 
