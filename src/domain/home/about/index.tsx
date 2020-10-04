@@ -79,7 +79,7 @@ const AboutMe: React.FC = () => {
       <Body>
         Im a front developer. I started this website with the idea of showing proyects I have done
         so far and write posts about new things I learn. I usually make stuff in React native and
-        ReactJs.
+        Nextjs.
       </Body>
       <CircleTriangleBottom />
     </Container>
