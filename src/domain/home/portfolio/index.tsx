@@ -109,7 +109,7 @@ const Project = styled.div`
   max-width: 300px;
   display: flex;
   flex-direction: column;
-  margin: ${space.s4};
+  margin: ${space.s4} auto;
   box-shadow: ${boxShadow.shadowMd};
   border: 1px solid ${colors.base.borders};
 `
