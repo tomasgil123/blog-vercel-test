@@ -51,6 +51,9 @@ const Subtitle = styled.div`
   font-size: ${space.s5};
   font-weight: 300;
   text-align: center;
+  max-width: 600px;
+  margin: auto;
+  padding-bottom: ${space.s4};
   @media (min-width: ${breakpoints.md}) {
     font-size: ${space.s6};
   }

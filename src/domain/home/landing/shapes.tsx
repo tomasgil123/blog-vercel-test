@@ -158,13 +158,16 @@ const ContainerSquareSmallCenter = styled.div`
   left: ${space.s40};
   position: relative;
   z-index: 10;
+  display: none;
   @media (min-width: ${breakpoints.md}) {
     top: 0px;
     left: 24rem;
+    display: inherit;
   }
   @media (min-width: ${breakpoints.lg}) {
     top: -${space.s64};
     left: 30rem;
+    display: inherit;
   }
 `
 
