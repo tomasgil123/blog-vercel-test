@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import LayoutMain from 'src/components/layout/mainLayout'
-import LayoutPost from 'src/components/layout/postLayout'
+import LayoutPost from 'src/components/layout/postlayout'
 
 type PageWithMainLayoutType = NextPage & { layout: typeof LayoutMain }
 
