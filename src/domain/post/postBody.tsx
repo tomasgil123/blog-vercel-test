@@ -11,6 +11,9 @@ const PostContainer = styled.div`
   max-width: 600px;
   padding-left: ${space.s4};
   padding-right: ${space.s4};
+  img[alt*='Layout'] {
+    width: 100%;
+  }
   img {
     max-width: 600px;
   }
@@ -23,7 +26,30 @@ const PostContainer = styled.div`
   }
 `
 
+const ImageBodyContainer = styled.div`
+  overflow-x: auto;
+`
+
 const PostBody: React.FC<{ source: string }> = (props) => {
+  function renderParagraph(props) {
+    const { children } = props
+
+    if (
+      children &&
+      children[0] &&
+      children.length === 1 &&
+      children[0].props &&
+      children[0].props.src
+    ) {
+      //images are wrapped by default by a p element
+      //we change it so it is a div with overflow-x: auto
+
+      return <ImageBodyContainer>{children}</ImageBodyContainer>
+    }
+
+    return <p>{children}</p>
+  }
+
   return (
     <PostContainer>
       <ReactMarkdown
@@ -31,6 +57,7 @@ const PostBody: React.FC<{ source: string }> = (props) => {
         source={props.source}
         renderers={{
           code: Code,
+          paragraph: renderParagraph,
         }}
         escapeHtml={false}
       />
