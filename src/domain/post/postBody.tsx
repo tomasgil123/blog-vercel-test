@@ -8,14 +8,14 @@ import Code from './code'
 const PostContainer = styled.div`
   width: 100%;
   margin: auto;
-  max-width: 600px;
+  max-width: 700px;
   padding-left: ${space.s4};
   padding-right: ${space.s4};
   img[alt*='Layout'] {
     width: 100%;
   }
   img {
-    max-width: 600px;
+    max-width: 700px;
   }
   p {
     line-height: 1.8;
