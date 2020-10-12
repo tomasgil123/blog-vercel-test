@@ -24,6 +24,16 @@ const PostContainer = styled.div`
       font-size: ${space.s5};
     }
   }
+  li {
+    line-height: 1.8;
+    font-size: ${space.s4};
+    @media (min-width: ${breakpoints.md}) {
+      font-size: ${space.s5};
+    }
+  }
+  ul {
+    list-style-type: circle;
+  }
 `
 
 const ImageBodyContainer = styled.div`
