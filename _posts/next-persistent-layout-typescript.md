@@ -32,13 +32,13 @@ What's going on? Since we are using typescript we need to specify what we are go
 We create a new type which will be an intersection of React.FC and layout property (you can read more about typescript intersections [here](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html) ). Basically, our home constant now will require a function component and a layout property of type MainLayout.
 
 ```ts
-import React from 'react'
+import React, { FC } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 import MainLayout from '../layouts/mainLayout'
 
-type HomeComponent = React.FC & { layout: typeof MainLayout }
+type HomeComponent = FC & { layout: typeof MainLayout }
 
 const Home: HomeComponent = () => {
   return (
@@ -55,11 +55,11 @@ export default Home
 As we see, this fades the error away. Let's implement it also on secondary-page.tsx:
 
 ```ts
-import React from 'react'
+import React, { FC } from 'react'
 
 import SecondaryLayout from '../layouts/secondaryLayout'
 
-type SecondaryComponent = React.FC & { layout: typeof SecondaryLayout }
+type SecondaryComponent = FC & { layout: typeof SecondaryLayout }
 
 const SecondaryPage: SecondaryComponent = () => {
   return <div>This is the secondary page</div>
@@ -123,14 +123,14 @@ export default MyApp
 Finally, we need to refactor our pages, index.tsx and second-page.tsx, to make them of type PageWithLayoutType:
 
 ```ts
-import React from 'react'
+import React, { FC } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import PageWithLayoutType from '../types/pageWithLayout'
 
 import MainLayout from '../layouts/mainLayout'
 
-const Home: React.FC = () => {
+const Home: FC = () => {
     return(
         ...
     )

@@ -8,11 +8,14 @@ import Code from './code'
 const PostContainer = styled.div`
   width: 100%;
   margin: auto;
-  max-width: 600px;
+  max-width: 700px;
   padding-left: ${space.s4};
   padding-right: ${space.s4};
+  img[alt*='Layout'] {
+    width: 100%;
+  }
   img {
-    max-width: 600px;
+    max-width: 700px;
   }
   p {
     line-height: 1.8;
@@ -21,9 +24,42 @@ const PostContainer = styled.div`
       font-size: ${space.s5};
     }
   }
+  li {
+    line-height: 1.8;
+    font-size: ${space.s4};
+    @media (min-width: ${breakpoints.md}) {
+      font-size: ${space.s5};
+    }
+  }
+  ul {
+    list-style-type: circle;
+  }
+`
+
+const ImageBodyContainer = styled.div`
+  overflow-x: auto;
 `
 
 const PostBody: React.FC<{ source: string }> = (props) => {
+  function renderParagraph(props) {
+    const { children } = props
+
+    if (
+      children &&
+      children[0] &&
+      children.length === 1 &&
+      children[0].props &&
+      children[0].props.src
+    ) {
+      //images are wrapped by default by a p element
+      //we change it so it is a div with overflow-x: auto
+
+      return <ImageBodyContainer>{children}</ImageBodyContainer>
+    }
+
+    return <p>{children}</p>
+  }
+
   return (
     <PostContainer>
       <ReactMarkdown
@@ -31,6 +67,7 @@ const PostBody: React.FC<{ source: string }> = (props) => {
         source={props.source}
         renderers={{
           code: Code,
+          paragraph: renderParagraph,
         }}
         escapeHtml={false}
       />
