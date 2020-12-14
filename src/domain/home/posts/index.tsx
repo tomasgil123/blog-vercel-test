@@ -1,10 +1,12 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import PostType from 'src/types/post'
 import { colors, space, breakpoints } from 'src/tokens'
 
 import Post from './post'
 import { TwoTriangles } from './shapes'
+import MainButton from 'src/components/button'
 
 const Container = styled.div`
   position: relative;
@@ -39,15 +41,20 @@ const Title = styled.div`
 `
 
 type PostsProps = {
-  lastThreePosts: PostType[]
+  posts: PostType[]
 }
 
-const Posts: React.FC<PostsProps> = ({ lastThreePosts }) => {
+const Posts: React.FC<PostsProps> = ({ posts }) => {
+  const router = useRouter()
+  const onSeeMorePosts = () => {
+    router.push('/all-posts')
+  }
+
   return (
     <Container>
       <Title>My latests posts</Title>
       <TwoTriangles />
-      {lastThreePosts.map((post) => (
+      {posts.map((post) => (
         <Post
           key={post.title}
           title={post.title}
@@ -56,6 +63,11 @@ const Posts: React.FC<PostsProps> = ({ lastThreePosts }) => {
           slug={post.slug}
         />
       ))}
+      {posts.length <= 3 && (
+        <>
+          <MainButton text={'See more posts'} onClickButton={onSeeMorePosts} />
+        </>
+      )}
     </Container>
   )
 }

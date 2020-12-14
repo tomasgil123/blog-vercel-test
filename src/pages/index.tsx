@@ -20,7 +20,7 @@ const Home: React.FC<HomeProps> = ({ lastThreePosts }) => {
       <Landing />
       <AboutMe />
       <Portfolio />
-      <Posts lastThreePosts={lastThreePosts} />
+      <Posts posts={lastThreePosts} />
       <Contact />
     </div>
   )
