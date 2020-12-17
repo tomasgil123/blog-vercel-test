@@ -36,7 +36,7 @@ The first solution that came to my mind was to test the Video component I made t
 
 It was clear that to test only the video component was not enough. I had to replicate the process a user would make on the page: enter, scroll to the video section and be able to see the video or group of videos.
 
-So far, so good. I started implementing the tests with the e2e testing library Cypress (another option could be Playwright), but soon after starting with the first test I stumble with the following problem: how do I know which pages to test for each case? In other words, which combinations of car maker and model had only one video, which ones had more than one and which had none?
+So far, so good. I started implementing the tests with the e2e testing Playwright, but soon after starting with the first test I stumble with the following problem: how do I know which pages to test for each case? In other words, which combinations of car maker and model had only one video, which ones had more than one and which had none?
 
 Taking a step back, this problem arises because we have a list of entities (cars in this case) and we want to create a page for each one, but all entities are not equal (some do not have videos, some have only one and other have more than one) and the nextjs page needs to take that into account. Moreover, these attributes could also change (we could remove videos from a car or add new ones to one). How do I know if all types of entities are being displayed correctly? I needed to mock the response of the request made in the getStaticProps of the page to be able to easily cover each use case.
 
@@ -52,12 +52,95 @@ So I try to modify the response of the request. But there was a problem: request
 
 Then now what? Mock service worker to the rescue! [Msw](https://github.com/mswjs/msw) (short for mock service worker) is a mocking API library for the browser and node.
 
-Once I had msw in place (which I did following this [example](https://github.com/vercel/next.js/tree/canary/examples/with-msw) ), I patch the response (response patching is a technique when a mocked response is based on the actual response) of the request which is made in getStaticProps in such a way I could cover each use case.
+I built a small project in order to make it easier for anyone to follow along (check it [here](https://github.com/tomasgil123/testing-static-pages-nextjs)). The project is an app which shows todos instead of cars (because the api I used only had todos) and some of them have one or more videos and some none.
 
-If you want to check a similar implementation (msw + playwritght for e2e tests) you can check [this repo](https://github.com/tomasgil123/testing-static-pages-nextjs) .
+To add msw to my proyect I followed this [example](https://github.com/vercel/next.js/tree/canary/examples/with-msw) . The first step was to add a “mock” folder to the repo and add the files handlers.ts, server.ts and index.ts:
 
-So you might be thinking: Ok, but this does not seems very usefull if not added to a wrok flow. How do we make this work in a Continuous Integration flow? We will discuss it in another post (I promise to drop the link here when its done). Stay tuned!
+![FolderStructure](/postImages/testing-nextjs-static-pages/folder-structure.png)
+
+In handlers.ts we will write down the code which will allow us to modify the responses for todo 1 and 2 (this is also called “patching a response”):
+
+```ts
+import { rest } from 'msw'
+
+//we mock a situation where the first todo has one video and the second todo has two videos
+//the rest of the todos do not have videos
+const mockVideos = [
+  ['https://www.youtube.com/watch?v=91CzTz2-IJw'],
+  ['https://www.youtube.com/watch?v=91CzTz2-IJw', 'https://www.youtube.com/watch?v=N6Kqg7bdKCQ'],
+]
+
+export const handlers = [
+  rest.get('https://jsonplaceholder.typicode.com/todos/1', async (req, res, ctx) => {
+    const originalResponse = await ctx.fetch(req)
+    const originalResponseData = await originalResponse.json()
+    originalResponseData.videoUrls = mockVideos[0]
+    return res(ctx.json(originalResponseData))
+  }),
+  rest.get('https://jsonplaceholder.typicode.com/todos/2', async (req, res, ctx) => {
+    const originalResponse = await ctx.fetch(req)
+    const originalResponseData = await originalResponse.json()
+    originalResponseData.videoUrls = mockVideos[1]
+    return res(ctx.json(originalResponseData))
+  }),
+]
+```
+
+Now when we make a request to todos/1 we will get a todo with a video and two videos for todos/2.
+
+Then we use setupServer() to set up a request interception layer in our NodeJS environment and make our former handlers work:
+
+```ts
+import { setupServer } from 'msw/node'
+import { handlers } from './handlers'
+
+export const server = setupServer(...handlers)
+```
+
+We only want to use the request interception layer when we are testing, so we add to \_app.ts:
+
+```ts
+if (process.env.NODE_ENV === 'test') {
+  require('../../mocks')
+}
+```
+
+### The tests
+
+[Playwright](https://playwright.dev/) is a great alternative to Cypress. More versatile, but maybe not so intuitive.
+We will make the following tests:
+
+- video section is not visible until scrolling
+- todo with one video is displayed correctly
+- todo with more than one video is displayed correctly
+- todo without videos is displayed correctly
+
+The core of a test will consist of accessing a page, scrolling down until the video section and asserting if the amount of videos displayed is correct. This is the tests to check if todo 1 is displaying only one video (when the todo has only one video the text "--Has video--" is print to the screen), as it should:
+
+```ts
+test('todo with one video are display correctly', async () => {
+  let browser = await playwright[browserType].launch()
+  const context = await browser.newContext()
+  let page = await context.newPage()
+  await page.goto('http://localhost:3000/todos/1')
+
+  const videoSection = await page.$('text="Video"')
+  videoSection.scrollIntoViewIfNeeded()
+
+  await page.waitForSelector('text="--Has video--"')
+
+  const numberElementsWithOneVideo = await page.$$eval(
+    'text="--Has video--"',
+    (items) => items.length
+  )
+  expect(numberElementsWithOneVideo).toBe(1)
+})
+```
+
+You can find the other tests [here](https://github.com/tomasgil123/testing-static-pages-nextjs).
+
+So you might be thinking: Ok, but this does not seem very useful if not added to a workflow. How do we make this work in a Continuous Integration flow? We will discuss it in another post (I promise to drop the link here when it's done). Stay tuned!
 
 ### Conclusion
 
-I managed to develop an approach to create e2e tests for nextjs static pages using a “response patching” strategy to mock the data I needed, which was possibly only thanks to msw.
+An alternative way of testing nextjs static pages is using a “response patching” strategy to mock the data the way we needed, using a library like mock service worker, and then using Playwright to make the e2e tests.
