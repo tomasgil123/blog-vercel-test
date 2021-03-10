@@ -63,7 +63,7 @@ const Posts: React.FC<PostsProps> = ({ posts }) => {
           slug={post.slug}
         />
       ))}
-      {posts.length <= 3 && (
+      {posts.length > 3 && (
         <>
           <MainButton text={'See more posts'} onClickButton={onSeeMorePosts} />
         </>
