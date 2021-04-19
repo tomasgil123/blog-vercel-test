@@ -1,6 +1,6 @@
 import Author from './author'
 
-type PostType = {
+export type PostType = {
   slug: string
   title: string
   date: string
@@ -13,4 +13,9 @@ type PostType = {
   content: string
 }
 
-export default PostType
+export interface PostThumbnail {
+  title: string
+  date: string
+  slug: string
+  coverImage: string
+}

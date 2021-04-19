@@ -71,7 +71,7 @@ This post page receives as props an object of type Post, which is defined this w
 
 ```ts
 import React from 'react'
-import PostType from 'src/types/post'
+import { PostType } from 'src/types/post'
 import PageWithLayoutType from 'src/types/pageWithLayout'
 import { getPostBySlug, getAllPosts } from 'src/lib/posts'
 

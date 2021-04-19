@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import PostType from 'src/types/post'
+import { PostThumbnail } from 'src/types/post'
 import { colors, space, breakpoints } from 'src/tokens'
 
 import Post from './post'
@@ -41,10 +41,11 @@ const Title = styled.div`
 `
 
 type PostsProps = {
-  posts: PostType[]
+  posts: PostThumbnail[]
+  totalPosts?: number
 }
 
-const Posts: React.FC<PostsProps> = ({ posts }) => {
+const Posts: React.FC<PostsProps> = ({ posts, totalPosts }) => {
   const router = useRouter()
   const onSeeMorePosts = () => {
     router.push('/all-posts')
@@ -63,7 +64,7 @@ const Posts: React.FC<PostsProps> = ({ posts }) => {
           slug={post.slug}
         />
       ))}
-      {posts.length > 3 && (
+      {totalPosts > 3 && (
         <>
           <MainButton text={'See more posts'} onClickButton={onSeeMorePosts} />
         </>

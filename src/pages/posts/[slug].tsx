@@ -1,5 +1,5 @@
 import React from 'react'
-import PostType from 'src/types/post'
+import { PostType } from 'src/types/post'
 import PageWithLayoutType from 'src/types/pageWithLayout'
 import { getPostBySlug, getAllPosts } from 'src/lib/posts'
 
@@ -29,15 +29,16 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params): Promise<unknown> {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'ogImage',
-    'coverImage',
-  ])
+  const postAttributes = {
+    title: '',
+    date: '',
+    slug: '',
+    author: '',
+    content: '',
+    ogImage: '',
+    coverImage: '',
+  }
+  const post = getPostBySlug<typeof postAttributes>(params.slug, Object.keys(postAttributes))
 
   return {
     props: {
@@ -49,7 +50,8 @@ export async function getStaticProps({ params }: Params): Promise<unknown> {
 }
 
 export async function getStaticPaths(): Promise<unknown> {
-  const posts = getAllPosts(['slug'])
+  const postAttributes = { slug: '', date: '' }
+  const posts = getAllPosts<typeof postAttributes>(Object.keys(postAttributes))
 
   return {
     paths: posts.map((posts) => {

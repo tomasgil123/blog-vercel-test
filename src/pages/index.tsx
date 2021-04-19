@@ -1,5 +1,5 @@
 import React from 'react'
-import PostType from 'src/types/post'
+import { PostType } from 'src/types/post'
 import PageWithLayout from 'src/types/pageWithLayout'
 import { getLastThreePosts } from 'src/lib/posts'
 
@@ -11,7 +11,7 @@ import Posts from 'src/domain/home/posts'
 import Contact from 'src/domain/home/contact'
 
 type HomeProps = {
-  lastThreePosts: PostType[]
+  lastThreePosts: { posts: PostType[]; totalPosts: number }
 }
 
 const Home: React.FC<HomeProps> = ({ lastThreePosts }) => {
@@ -20,7 +20,7 @@ const Home: React.FC<HomeProps> = ({ lastThreePosts }) => {
       <Landing />
       <AboutMe />
       <Portfolio />
-      <Posts posts={lastThreePosts} />
+      <Posts posts={lastThreePosts.posts} totalPosts={lastThreePosts.totalPosts} />
       <Contact />
     </div>
   )
@@ -31,14 +31,15 @@ const Home: React.FC<HomeProps> = ({ lastThreePosts }) => {
 export default Home
 
 export const getStaticProps = async (): Promise<unknown> => {
-  const lastThreePosts = getLastThreePosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const postAttributes = {
+    title: '',
+    date: '',
+    slug: '',
+    author: '',
+    coverImage: '',
+    excerpt: '',
+  }
+  const lastThreePosts = getLastThreePosts<typeof postAttributes>(Object.keys(postAttributes))
 
   return {
     props: { lastThreePosts },

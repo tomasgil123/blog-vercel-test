@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import PostType from 'src/types/post'
+import { PostThumbnail } from 'src/types/post'
 import PageWithLayout from 'src/types/pageWithLayout'
 import { getAllPosts } from 'src/lib/posts'
 
@@ -7,7 +7,7 @@ import Layout from 'src/components/layout/mainLayout'
 import Posts from 'src/domain/home/posts'
 
 type HomeProps = {
-  allPosts: PostType[]
+  allPosts: PostThumbnail[]
 }
 
 const Home: React.FC<HomeProps> = ({ allPosts }) => {
