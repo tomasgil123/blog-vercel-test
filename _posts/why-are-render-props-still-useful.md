@@ -3,6 +3,7 @@ title: 'Why are render props still useful'
 date: '03/09/2021'
 coverImage: 'postImages/why-are-render-props-still-useful/layout.jpg'
 slug: 'why-are-render-props-still-useful'
+tags: "react*render-props"
 ---
 
 # Why are render props still useful

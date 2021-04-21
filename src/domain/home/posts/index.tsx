@@ -62,6 +62,7 @@ const Posts: React.FC<PostsProps> = ({ posts, totalPosts }) => {
           date={post.date}
           coverImage={post.coverImage}
           slug={post.slug}
+          tags={post.tags}
         />
       ))}
       {totalPosts > 3 && (

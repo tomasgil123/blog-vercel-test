@@ -18,4 +18,5 @@ export interface PostThumbnail {
   date: string
   slug: string
   coverImage: string
+  tags: string
 }

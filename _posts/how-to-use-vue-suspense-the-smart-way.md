@@ -3,6 +3,7 @@ title: 'How to use vue suspense: the smart way'
 date: '03/10/2021'
 coverImage: 'postImages/how-to-use-vue-suspense-the-smart-way/layout.jpg'
 slug: 'how-to-use-vue-suspense-the-smart-way'
+tags: "vue*vue-suspense"
 ---
 
 # How to use vue suspense: the smart way

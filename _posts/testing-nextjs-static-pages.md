@@ -3,6 +3,7 @@ title: 'Testing nextjs static pages'
 date: '12/14/2020'
 coverImage: 'postImages/testing-nextjs-static-pages/layout.jpg'
 slug: 'testing-nextjs-static-pages'
+tags: "testing*playwright*mock-service-worker"
 ---
 
 # Testing nextjs static pages

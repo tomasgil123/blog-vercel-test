@@ -3,6 +3,7 @@ title: 'TypeScript and the developer self control problem'
 date: '10/12/2020'
 coverImage: 'postImages/typescript-and-the-developer-self-control-problem/layout.jpg'
 slug: 'typescript-and-the-developer-self-control-problem'
+tags: "typescript"
 ---
 
 # TypeScript and the developer self control problem
