@@ -75,7 +75,7 @@ const Tag = styled.span`
   padding-left: ${space.s2};
   padding-right: ${space.s2};
   font-size: 14px;
-  font-weight: bold;
+  font-weight: light;
   height: 36px;
   line-height: 24px;
   margin: ${space.s1};
