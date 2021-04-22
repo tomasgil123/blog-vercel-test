@@ -3,6 +3,7 @@
 import 'src/styles/globals.css'
 import PageWithLayoutType from 'src/types/pageWithLayout'
 import React from 'react'
+import 'tailwindcss/tailwind.css'
 
 type AppLayoutProps = {
   Component: PageWithLayoutType
