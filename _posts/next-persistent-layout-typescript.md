@@ -3,7 +3,7 @@ title: 'Persistent layout patterns in nextjs with typescript'
 date: '10/03/2020'
 coverImage: 'postImages/next-persistent-layout-typescript/layout.jpg'
 slug: 'next-persistent-layout-typescript'
-tags: "nextjs*typescript"
+tags: "react*nextjs*typescript"
 ---
 
 # Persistent layout patterns in nextjs with typescript

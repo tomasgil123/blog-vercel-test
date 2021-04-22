@@ -26,7 +26,7 @@ const Home: React.FC<HomeProps> = ({ allPosts }) => {
 export default Home
 
 export const getStaticProps = async (): Promise<unknown> => {
-  const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt'])
+  const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'])
 
   return {
     props: { allPosts },

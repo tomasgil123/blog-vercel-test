@@ -2,17 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { colors, space, breakpoints, boxShadow } from 'src/tokens'
-import {
-  TYPESCRIPT,
-  TESTING,
-  VUE,
-  VUE_SUSPENSE,
-  PLAYWRIGHT,
-  REACT,
-  NEXTJS,
-  RENDER_PROPS,
-  MOCK_SERVICE_WORKER,
-} from 'src/constants/tags'
+import { getTagsColor, getTagsTextColor } from 'src/utils/tags'
 import Link from 'next/link'
 
 const Container = styled.div`
@@ -86,11 +76,13 @@ const Tag = styled.span`
   padding-right: ${space.s2};
   font-size: 14px;
   font-weight: bold;
-  line-height: none;
+  height: 36px;
+  line-height: 24px;
   margin: ${space.s1};
   opacity: 0.7;
-  background-color: ${({ color }: any) => color};
-  border-radius: ${space.s8};
+  background-color: ${({ bgColor }: any) => bgColor};
+  color: ${({ color }: any) => color};
+  border-radius: ${space.s2};
 `
 
 type PostProps = {
@@ -109,31 +101,6 @@ const formatDate = (date) => {
   return `${monthNameShort} ${numberDay}, ${numberYear}`
 }
 
-const getTagsColor = (tag: string) => {
-  switch (tag) {
-    case TYPESCRIPT:
-      return `${colors.base.darksLateBlue}`
-    case REACT:
-      return `${colors.base.deepSkyBlue}`
-    case NEXTJS:
-      return `${colors.base.deepSkyBlue_shade1}`
-    case RENDER_PROPS:
-      return `${colors.base.deepSkyBlue_shade2}`
-    case VUE:
-      return `${colors.text.success}`
-    case VUE_SUSPENSE:
-      return `${colors.text.success_shade1}`
-    case TESTING:
-      return `${colors.base.gold}`
-    case PLAYWRIGHT:
-      return `${colors.base.gold_shade1}`
-    case MOCK_SERVICE_WORKER:
-      return `${colors.base.gold_shade2}`
-    default:
-      return `${colors.base.tomato}`
-  }
-}
-
 const Post: React.FC<PostProps> = ({ title, date, coverImage, slug, tags }) => {
   return (
     <Container>
@@ -150,7 +117,7 @@ const Post: React.FC<PostProps> = ({ title, date, coverImage, slug, tags }) => {
       </ContainerDateInformation>
       <ContainerTags>
         {tags.split('*').map((tag) => (
-          <Tag key={tag} color={getTagsColor(tag)}>
+          <Tag key={tag} bgColor={getTagsColor(tag)} color={getTagsTextColor(tag)}>
             {tag}
           </Tag>
         ))}
