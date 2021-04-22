@@ -1,10 +1,15 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { PostThumbnail } from 'src/types/post'
 import { colors, space, breakpoints } from 'src/tokens'
 
-import Post from './post'
+// * Utils *
+import { getMainTags, getTagsColor, getTagsTextColor } from 'src/utils/tags'
+
+import Post, { Tag, ContainerTags } from './post'
 import { TwoTriangles } from './shapes'
 import MainButton from 'src/components/button'
 
@@ -26,26 +31,41 @@ const Container = styled.div`
   }
 `
 
-const Title = styled.div`
+const Title = styled.h1`
   color: ${colors.text.primary};
-  font-size: ${space.s6};
+  font-size: ${space.s8};
   text-align: center;
   font-weight: 700;
-  padding-bottom: ${space.s4};
+  padding-bottom: ${space.s12};
   @media (min-width: ${breakpoints.md}) {
     font-size: ${space.s8};
   }
   @media (min-width: ${breakpoints.lg}) {
-    font-size: ${space.s12};
+    font-size: ${space.s16};
+  }
+`
+
+const Subtitle = styled.h2`
+  color: ${colors.text.primary};
+  font-size: ${space.s5};
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: ${space.s1};
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${space.s6};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: ${space.s8};
   }
 `
 
 type PostsProps = {
   posts: PostThumbnail[]
   totalPosts?: number
+  tag?: string
 }
 
-const Posts: React.FC<PostsProps> = ({ posts, totalPosts }) => {
+const Posts = ({ posts, totalPosts, tag }: PostsProps): JSX.Element => {
   const router = useRouter()
   const onSeeMorePosts = () => {
     router.push('/all-posts')
@@ -54,6 +74,21 @@ const Posts: React.FC<PostsProps> = ({ posts, totalPosts }) => {
   return (
     <Container>
       <Title>My latests posts</Title>
+      <Subtitle>{tag ? 'Other topics' : 'Topics'}</Subtitle>
+      <div className="flex flexs-row flex-wrap justify-center py-2">
+        {getMainTags
+          .filter((item) => item !== tag)
+          .map((tag) => (
+            <Link key={tag} href={`/all-posts/${tag}`}>
+              <a
+                style={{ background: getTagsColor(tag), color: getTagsTextColor(tag) }}
+                className="h-9 leading-6 py-1 px-2 m-1 opacity-70 rounded-lg text-base font-normal"
+              >
+                {tag}
+              </a>
+            </Link>
+          ))}
+      </div>
       <TwoTriangles />
       {posts.map((post) => (
         <Post

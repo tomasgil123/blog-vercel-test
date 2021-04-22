@@ -61,7 +61,7 @@ const CoverImage = styled.img`
   height: 250px;
 `
 
-const ContainerTags = styled.div`
+export const ContainerTags = styled.div`
   display: flex;
   flex-direction: row;
   padding-top: ${space.s2};
@@ -69,7 +69,7 @@ const ContainerTags = styled.div`
   flex-wrap: wrap;
 `
 
-const Tag = styled.span`
+export const Tag = styled.span`
   padding-top: ${space.s1};
   padding-bottom: ${space.s1};
   padding-left: ${space.s2};

@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticProps } from 'next'
 import { PostThumbnail } from 'src/types/post'
 import PageWithLayout from 'src/types/pageWithLayout'
 import { getAllPosts } from 'src/lib/posts'
-
-// * Utils *
-import { getMainTags } from 'src/utils/tags'
 
 // * Components *
 import Layout from 'src/components/layout/mainLayout'
@@ -31,21 +28,7 @@ const ListPosts: React.FC<ListPostsProps> = ({ posts, tag }) => {
 
 export default ListPosts
 
-//if we dont add the async to getStaticPath we get a weird error
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  getMainTags
-  return {
-    paths: [
-      ...getMainTags.map((tag) => {
-        return { params: { tag: tag } }
-      }),
-    ],
-    fallback: false,
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
   const postAttributes = {
     title: '',
     date: '',
@@ -54,9 +37,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     tags: '',
   }
   const allPosts = getAllPosts<typeof postAttributes>(Object.keys(postAttributes))
-  const posts = allPosts.filter((post) => post.tags.includes(params.tag as string))
 
   return {
-    props: { posts: posts, tag: params.tag as string },
+    props: { posts: allPosts },
   }
 }
