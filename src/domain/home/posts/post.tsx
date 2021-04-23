@@ -111,7 +111,7 @@ const Post: React.FC<PostProps> = ({ title, date, coverImage, slug, tags }) => {
       </Title>
       <ContainerDateInformation>
         <DateIcon>
-          <img src={'calendar.svg'} alt="calendar" />
+          <img src={'/calendar.svg'} alt="calendar" />
         </DateIcon>
         <Body>{formatDate(date)}</Body>
       </ContainerDateInformation>
@@ -122,7 +122,7 @@ const Post: React.FC<PostProps> = ({ title, date, coverImage, slug, tags }) => {
           </Tag>
         ))}
       </ContainerTags>
-      <CoverImage src={coverImage} />
+      <CoverImage src={`/${coverImage}`} />
     </Container>
   )
 }
