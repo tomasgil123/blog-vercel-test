@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown/with-html'
 import styled from 'styled-components'
-import { space, breakpoints } from 'src/tokens'
+import { space, breakpoints, colors } from 'src/tokens'
 
 import Code from './code'
 
@@ -15,21 +15,41 @@ const PostContainer = styled.div`
     width: 100%;
   }
   img {
+    margin-top: ${space.s8};
     max-width: 700px;
   }
+  pre {
+    margin-top: ${space.s8} !important;
+  }
+  h1 {
+    font-size: ${space.s8};
+    color: ${colors.text.primary};
+    margin-top: ${space.s4};
+    font-weight: 700;
+  }
+  h3 {
+    font-size: ${space.s5};
+    color: ${colors.text.primary};
+    margin-top: ${space.s8};
+    font-weight: 700;
+  }
   p {
-    line-height: 1.8;
-    font-size: ${space.s4};
-    @media (min-width: ${breakpoints.md}) {
-      font-size: ${space.s5};
+    margin-top: ${space.s8};
+  }
+  p,
+  li {
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: 400;
+    color: ${colors.text.primary};
+    @media (min-width: ${breakpoints.lg}) {
+      font-size: 21px;
+      line-height: 32px;
     }
   }
-  li {
-    line-height: 1.8;
-    font-size: ${space.s4};
-    @media (min-width: ${breakpoints.md}) {
-      font-size: ${space.s5};
-    }
+  ul {
+    margin-top: ${space.s8};
+    padding-left: ${space.s4};
   }
   ul {
     list-style-type: circle;
