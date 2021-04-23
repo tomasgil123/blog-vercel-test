@@ -20,9 +20,11 @@ const Container = styled.div`
 
 const Footer: React.FC = () => {
   return (
-    <Container>
-      <div>© TomasGil 2020</div>
-    </Container>
+    <div className="absolute bottom-0 w-full">
+      <Container>
+        <div>© TomasGil 2020</div>
+      </Container>
+    </div>
   )
 }
 

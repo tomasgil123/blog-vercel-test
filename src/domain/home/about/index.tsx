@@ -57,6 +57,8 @@ const ProfileImage = styled.img`
   width: ${space.s32};
   margin-top: ${space.s6};
   margin-bottom: ${space.s6};
+  margin-left: auto;
+  margin-right: auto;
   @media (min-width: ${breakpoints.md}) {
     margin-top: ${space.s8};
     margin-bottom: ${space.s8};

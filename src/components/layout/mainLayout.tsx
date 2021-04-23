@@ -6,6 +6,8 @@ import Footer from 'src/components/footer'
 
 const Container = styled.div`
   overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
 `
 
 type LayoutProps = {
@@ -16,7 +18,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
   return (
     <Container>
       <Header showProgressBar={false} />
-      {children}
+      <div className="pb-12">{children}</div>
       <Footer />
     </Container>
   )
