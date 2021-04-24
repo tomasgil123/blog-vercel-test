@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { colors, space } from 'src/tokens/index'
 
-const ContainerButton = styled.span`
+export const ContainerButton = styled.button`
   font-size: ${space.s5};
   color: ${colors.text.primary};
   font-weight: 600;

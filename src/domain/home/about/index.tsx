@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { colors, space, breakpoints } from 'src/tokens'
 
 import { CircleTriangleBottom } from './shapes'
+import ButtonLink from 'src/components/button/buttonLink'
 
 const Container = styled.div`
   position: relative;
@@ -22,7 +23,7 @@ const Container = styled.div`
   }
 `
 
-const Title = styled.div`
+const Title = styled.h1`
   color: ${colors.text.primary};
   font-size: ${space.s6};
   text-align: center;
@@ -83,6 +84,17 @@ const AboutMe: React.FC = () => {
         so far and write posts about new things I learn. I usually make stuff in React native and
         Nextjs.
       </Body>
+      <ButtonLink
+        link={
+          <a
+            href="https://www.linkedin.com/in/tomas-gil/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Linkedin
+          </a>
+        }
+      />
       <CircleTriangleBottom />
     </Container>
   )

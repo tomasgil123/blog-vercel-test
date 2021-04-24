@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { PostThumbnail } from 'src/types/post'
 import { colors, space, breakpoints } from 'src/tokens'
@@ -9,9 +8,10 @@ import { colors, space, breakpoints } from 'src/tokens'
 // * Utils *
 import { getMainTags, getTagsColor, getTagsTextColor } from 'src/utils/tags'
 
-import Post, { Tag, ContainerTags } from './post'
+// * Components *
+import ButtonLink from 'src/components/button/buttonLink'
+import Post from './post'
 import { TwoTriangles } from './shapes'
-import MainButton from 'src/components/button'
 
 const Container = styled.div`
   position: relative;
@@ -66,11 +66,6 @@ type PostsProps = {
 }
 
 const Posts = ({ posts, totalPosts, tag }: PostsProps): JSX.Element => {
-  const router = useRouter()
-  const onSeeMorePosts = () => {
-    router.push('/all-posts')
-  }
-
   return (
     <Container>
       <Title>My latests posts</Title>
@@ -101,9 +96,13 @@ const Posts = ({ posts, totalPosts, tag }: PostsProps): JSX.Element => {
         />
       ))}
       {totalPosts > 3 && (
-        <>
-          <MainButton text={'See more posts'} onClickButton={onSeeMorePosts} />
-        </>
+        <ButtonLink
+          link={
+            <Link href="/all-posts">
+              <a>See all posts</a>
+            </Link>
+          }
+        />
       )}
     </Container>
   )

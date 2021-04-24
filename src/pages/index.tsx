@@ -19,8 +19,8 @@ const Home: React.FC<HomeProps> = ({ lastThreePosts }) => {
     <div>
       <Landing />
       <AboutMe />
-      <Portfolio />
       <Posts posts={lastThreePosts.posts} totalPosts={lastThreePosts.totalPosts} />
+      <Portfolio />
       <Contact />
     </div>
   )
