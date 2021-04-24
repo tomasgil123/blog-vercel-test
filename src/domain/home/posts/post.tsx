@@ -69,22 +69,6 @@ export const ContainerTags = styled.div`
   flex-wrap: wrap;
 `
 
-export const Tag = styled.span`
-  padding-top: ${space.s1};
-  padding-bottom: ${space.s1};
-  padding-left: ${space.s2};
-  padding-right: ${space.s2};
-  font-size: 14px;
-  font-weight: light;
-  height: 36px;
-  line-height: 24px;
-  margin: ${space.s1};
-  opacity: 0.7;
-  background-color: ${({ bgColor }: any) => bgColor};
-  color: ${({ color }: any) => color};
-  border-radius: ${space.s2};
-`
-
 type PostProps = {
   title: string
   date: string
@@ -102,6 +86,10 @@ const formatDate = (date) => {
 }
 
 const Post: React.FC<PostProps> = ({ title, date, coverImage, slug, tags }) => {
+  const stylesTag = (bgColor: string, color: string) => {
+    return { backgroundColor: bgColor, color: color }
+  }
+
   return (
     <Container>
       <Title>
@@ -117,9 +105,13 @@ const Post: React.FC<PostProps> = ({ title, date, coverImage, slug, tags }) => {
       </ContainerDateInformation>
       <ContainerTags>
         {tags.split('*').map((tag) => (
-          <Tag key={tag} bgColor={getTagsColor(tag)} color={getTagsTextColor(tag)}>
+          <span
+            key={tag}
+            style={stylesTag(getTagsColor(tag), getTagsTextColor(tag))}
+            className="py-1 px-2 text-sm font-normal opacity-70 h-9 m-1 leading-6 rounded-lg"
+          >
             {tag}
-          </Tag>
+          </span>
         ))}
       </ContainerTags>
       <CoverImage src={`/${coverImage}`} />
