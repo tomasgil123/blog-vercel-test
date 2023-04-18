@@ -88,9 +88,7 @@ const Landing: React.FC = () => {
       </ContainerWorkStatus>
       <ContainerTitle>
         <Title>Hi, Im Tomas</Title>
-        <Subtitle>
-          Im a front developer specialized in building web and mobile apps with React
-        </Subtitle>
+        <Subtitle>Vamo a hacer un LMS</Subtitle>
         <MainButton text={'Send me an email'} onClickButton={onSendEmail} />
       </ContainerTitle>
       <SquareHollowCenterTop />
